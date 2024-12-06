@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Octicons from 'react-native-vector-icons/Octicons';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import {colors} from '../utils/colors';
 import {fonts} from '../utils/fonts';
 
@@ -19,6 +20,9 @@ const SignupScreen = () => {
 
   const handleBack = () => {
     navigation.goBack();
+  };
+  const handleLogin = () => {
+    navigation.navigate('LOGIN');
   };
 
   return (
@@ -51,17 +55,18 @@ const SignupScreen = () => {
           />
         </View>
         <View style={styles.inputContainer}>
-          <Ionicons
-            name={'lock-closed-outline'}
+          <SimpleLineIcons
+            name={'screen-smartphone'}
             size={30}
             width={30}
             color={colors.secondary}
           />
           <TextInput
             style={styles.textInput}
-            placeholder="Enter your password"
+            placeholder="Enter your phone no"
             placeholderTextColor={colors.secondary}
             secureTextEntry={secureEntery}
+            keyboardType="phone-pad"
           />
         </View>
         <View style={styles.inputContainer}>
@@ -84,9 +89,7 @@ const SignupScreen = () => {
             <Octicons name={'eye'} size={20} color={colors.secondary} />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity>
-          <Text style={styles.forgotPasswordText}>Forgot Password ?</Text>
-        </TouchableOpacity>
+
         <TouchableOpacity style={styles.loginButtonWrapper}>
           <Text style={styles.loginText}>Sign up</Text>
         </TouchableOpacity>
@@ -99,8 +102,10 @@ const SignupScreen = () => {
           <Text style={styles.googleText}>Google</Text>
         </TouchableOpacity>
         <View style={styles.footerContainer}>
-          <Text style={styles.accountText}>Don't have an account</Text>
-          <Text style={styles.signupText}>Sign up</Text>
+          <Text style={styles.accountText}>Already have an account</Text>
+          <TouchableOpacity onPress={handleLogin}>
+            <Text style={styles.signupText}>Login</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
